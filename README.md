@@ -10,9 +10,9 @@ Inside one of my controllers I have made a two method calls:
  
 ```
 function list(rc){
-            rc.page = 1;
-            rc.recordcount = variables.blogService.page(rc.page,0,local.type);
-            rc.data = variables.blogService.list();
+    rc.page = 1;
+    rc.recordcount = variables.blogService.page(rc.page,0,local.type);
+    rc.data = variables.blogService.list();
 }
 ```
 
@@ -20,7 +20,7 @@ The service list function looks like this:
 
 ```
 function list(){
-            return variables.blogs;
+    return variables.blogs;
 }
 ```
  
@@ -74,15 +74,15 @@ _blogService_
 
 ```
 component accessors = true{
-            variables.blogs = createObject("java","java.util.LinkedHashMap").init();
+    variables.blogs = createObject("java","java.util.LinkedHashMap").init();
 }
  
 function page(page){
-            // build variables.blogs struct from DB query
+    // build variables.blogs struct from DB query
 }
  
 function list(){
-            return variables.blogs;
+    return variables.blogs;
 }
 ```
  
@@ -92,9 +92,9 @@ The two potential solutions I have, are:
 2. Lock the two method calls, like:
 
 ```
-cflock (name="listBlogService", type="exclusive", timeout="30") {
-            rc.recordcount = variables.blogService.page(rc.page,0,local.type);
-            rc.data = variables.blogService.list();
+cflock (name="listBlogService", type="exclusive", timeout=" 
+    rc.recordcount = variables.blogService.page(rc.page,0,local.type);
+    rc.data = variables.blogService.list();
 }
 ```
 
