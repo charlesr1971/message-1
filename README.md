@@ -92,7 +92,7 @@ The two potential solutions I have, are:
 2. Lock the two method calls, like:
 
 ```
-cflock (name="listBlogService", type="exclusive", timeout=" 
+cflock (name="listBlogService", type="exclusive", timeout="30"){ 
     rc.recordcount = variables.blogService.page(rc.page,0,local.type);
     rc.data = variables.blogService.list();
 }
